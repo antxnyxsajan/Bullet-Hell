@@ -8,7 +8,7 @@ public class EnemySpawn : MonoBehaviour
     Vector2 spawnPos=new Vector2();
     void Start()
     {
-        
+        nextSpawn = spawnRate;   
     }
 
     void Update()

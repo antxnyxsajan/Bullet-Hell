@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     Vector2 moveInput;
     [SerializeField] float speed = 5f;
+    [SerializeField] int hp = 5;
 
     void Start()
     {
@@ -19,5 +20,20 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = moveInput * speed;
+    }
+
+    void damaged()
+    {
+        hp--;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Enemy")
+            damaged();
     }
 }
