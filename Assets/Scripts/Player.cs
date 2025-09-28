@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             damaged();
     }
 
-    public Vector2 pos()
+    public Vector2 getPos()
     {
         return (Vector2)transform.position;
     }
