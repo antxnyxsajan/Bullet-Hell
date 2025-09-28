@@ -5,7 +5,6 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] float spawnRate = 2f;
     [SerializeField] GameObject enemy;
     float nextSpawn = 0f;
-    Vector2 spawnPos=new Vector2();
     void Start()
     {
         nextSpawn = spawnRate;   
@@ -18,6 +17,10 @@ public class EnemySpawn : MonoBehaviour
             Instantiate(enemy, transform.position, Quaternion.identity);
             nextSpawn = Time.time + spawnRate;
         }
+    }
+
+    void spawnPos()
+    { 
     }
 
     

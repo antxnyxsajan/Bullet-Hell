@@ -36,4 +36,9 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Enemy")
             damaged();
     }
+
+    public Vector2 pos()
+    {
+        return (Vector2)transform.position;
+    }
 }
