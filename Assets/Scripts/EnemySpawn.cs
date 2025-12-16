@@ -9,7 +9,7 @@ public class EnemySpawn : MonoBehaviour
     void Start()
     {
         nextSpawn = spawnRate;
-        p = FindObjectOfType<Player>();
+        p = FindAnyObjectByType<Player>();
     }
 
     void Update()
@@ -27,21 +27,11 @@ public class EnemySpawn : MonoBehaviour
         int ch = Random.Range(1, 5); // 1:left; 2:top; 3:right; 4:bottom;
         switch (ch)
         {
-            case 1: 
-                return new Vector2(playerPos.x - 14f, Random.Range(playerPos.y - 8f, playerPos.y + 8f));
-                break;
-            case 2:
-                return new Vector2(Random.Range(playerPos.x - 14f, playerPos.y + 14f),playerPos.y+8);
-                break;
-            case 3:
-                return new Vector2(playerPos.x + 14f, Random.Range(playerPos.y - 8f, playerPos.y + 8f));
-                break;
-            case 4:
-                return new Vector2(Random.Range(playerPos.x - 14f, playerPos.x + 14f), playerPos.y - 8);
-                break;
-            default:
-                return (Vector2)transform.position;
-                break;
+            case 1: return new Vector2(playerPos.x - 14f, Random.Range(playerPos.y - 8f, playerPos.y + 8f)); break;
+            case 2: return new Vector2(Random.Range(playerPos.x - 14f, playerPos.y + 14f), playerPos.y + 8); break;
+            case 3: return new Vector2(playerPos.x + 14f, Random.Range(playerPos.y - 8f, playerPos.y + 8f)); break;
+            case 4: return new Vector2(Random.Range(playerPos.x - 14f, playerPos.x + 14f), playerPos.y - 8); break;
+            default: return (Vector2)transform.position; break;
         }
     }
 
