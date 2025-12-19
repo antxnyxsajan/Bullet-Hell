@@ -327,7 +327,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 6.76
+    OrthographicSize: 7.54
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -601,7 +601,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 6.76
+  orthographic size: 7.54
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1340,9 +1340,10 @@ GameObject:
   m_Component:
   - component: {fileID: 726808399}
   - component: {fileID: 726808400}
+  - component: {fileID: 726808401}
   m_Layer: 0
-  m_Name: Sprite & Gun
-  m_TagString: pSprite
+  m_Name: Sprite
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1359,8 +1360,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1771856416}
+  m_Children: []
   m_Father: {fileID: 1931106251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &726808400
@@ -1418,6 +1418,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &726808401
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726808398}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b3a7f21375137b40bba3d5800740cb2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &866522514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,13 +2270,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771856415}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.934, y: -0.078, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.226, y: -0.156, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2914146996868308982}
-  m_Father: {fileID: 726808399}
+  m_Father: {fileID: 1931106251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1771856417
 SpriteRenderer:
@@ -2301,11 +2323,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 11
   m_Sprite: {fileID: 3844290557458450146, guid: 48b7a05d0c2a6644e95d74e91b86b335, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.125, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2324,10 +2346,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 5365608809944334814, guid: 850a15ae4e8636f42aeaabf6f9270ba2, type: 3}
-  nozzle: {fileID: 9175332611895763097}
   magSize: 5
   fireRate: 0.7
   reloadRate: 5
+  GunLeft: {fileID: -8931041448684566405, guid: b0f5cda00b5168143baad56d61b561ba, type: 3}
+  GunRight: {fileID: 3844290557458450146, guid: 48b7a05d0c2a6644e95d74e91b86b335, type: 3}
 --- !u!1 &1868078543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,7 +2573,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -2582,6 +2605,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 726808399}
+  - {fileID: 1771856416}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1931106252
@@ -2898,7 +2922,7 @@ Transform:
   m_GameObject: {fileID: 9175332611895763097}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.421, y: 0.091, z: 0}
+  m_LocalPosition: {x: 0.544, y: 0.161, z: 0}
   m_LocalScale: {x: 0.50432605, y: 0.114404395, z: 0.22150001}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -5,23 +5,30 @@ using Unity.VisualScripting;
 public class Gun: MonoBehaviour
 {
     [SerializeField] GameObject bullet;
-    [SerializeField] GameObject nozzle;
     [SerializeField] int magSize = 5;
     [SerializeField] float fireRate = 1f;
     [SerializeField] float reloadRate = 5f;
-    GameObject pSprite;
+    [SerializeField] Sprite GunLeft;
+    [SerializeField] Sprite GunRight;
+    SpriteRenderer gSprite;
     GameObject player;
+    GameObject nozzle;
     float nextFire;
     int mag;
     bool reloading = false;
     bool isRight = true;
 
+    void Awake()
+    {
+        gSprite = GetComponent<SpriteRenderer>();
+        player = GameObject.FindWithTag("Player");
+        nozzle = transform.GetChild(0).gameObject;
+    }
+
     void Start()
     {
         mag = magSize;
         nextFire = fireRate;
-        pSprite = GameObject.FindWithTag("pSprite");
-        player = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -43,16 +50,15 @@ public class Gun: MonoBehaviour
         if ((mousePos.x > player.transform.position.x) && !isRight)
         {
             player.transform.localScale = new Vector3(1, 1, 1);
-            //transform.localScale = new Vector3(1, 1, 1);
+            gSprite.sprite = GunRight;
             isRight = true;
         }
         else if ((mousePos.x <= player.transform.position.x) && isRight)
         {
-            player.transform.localScale = new Vector3(-1, 1, 1);
+            player.transform.localScale = new Vector3(-1, 1, 1) ;
+            gSprite.sprite = GunLeft;
             isRight = false;
         }
-        if(!isRight)
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     IEnumerator Reload()

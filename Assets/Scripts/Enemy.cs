@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] int hp = 3;
     [SerializeField] float speed = 5f;
-    void Start()
+    void Awake()
     {
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
