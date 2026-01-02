@@ -13,6 +13,7 @@ public class Gun: MonoBehaviour
     SpriteRenderer gSprite;
     GameObject player;
     GameObject nozzle;
+    GameObject pointCam;
     float nextFire;
     int mag;
     bool reloading = false;
@@ -22,6 +23,7 @@ public class Gun: MonoBehaviour
     {
         gSprite = GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player");
+        //pointCam = GameObject.FindWithTag("pointCam");
         nozzle = transform.GetChild(0).gameObject;
     }
 
@@ -37,6 +39,7 @@ public class Gun: MonoBehaviour
         Vector2 direction = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        //pointCam.transform.rotation = Quaternion.Euler(0f,0f,angle);
 
         if (Input.GetMouseButtonDown(0) && mag > 0 && Time.time > nextFire)
         {
@@ -47,16 +50,20 @@ public class Gun: MonoBehaviour
         if (mag <= 0 && !reloading)
             StartCoroutine(Reload());
 
-        if ((mousePos.x > player.transform.position.x) && !isRight)
+
+        //pointing direction
+        if ((mousePos.x > player.transform.position.x) && !isRight) //right checking
         {
             player.transform.localScale = new Vector3(1, 1, 1);
             gSprite.sprite = GunRight;
+            //pointCam.transform.position = new Vector3(Mathf.Abs(pointCam.transform.position.x),pointCam.transform.position.y,pointCam.transform.position.z);
             isRight = true;
         }
-        else if ((mousePos.x <= player.transform.position.x) && isRight)
+        else if ((mousePos.x <= player.transform.position.x) && isRight) //left checking
         {
             player.transform.localScale = new Vector3(-1, 1, 1) ;
             gSprite.sprite = GunLeft;
+            //pointCam.transform.position = new Vector3(Mathf.Abs(pointCam.transform.position.x)*-1f,pointCam.transform.position.y,pointCam.transform.position.z);
             isRight = false;
         }
     }
@@ -68,4 +75,5 @@ public class Gun: MonoBehaviour
         mag = magSize;
         reloading = false;
     }
+
 }
