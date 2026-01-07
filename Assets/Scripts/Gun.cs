@@ -39,7 +39,6 @@ public class Gun: MonoBehaviour
         Vector2 direction = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        //pointCam.transform.rotation = Quaternion.Euler(0f,0f,angle);
 
         if (Input.GetMouseButtonDown(0) && mag > 0 && Time.time > nextFire)
         {
@@ -50,7 +49,7 @@ public class Gun: MonoBehaviour
         if (mag <= 0 && !reloading)
             StartCoroutine(Reload());
 
-
+        //nest pointCam in Gun if pointCam is follow target
         //pointing direction
         if ((mousePos.x > player.transform.position.x) && !isRight) //right checking
         {
